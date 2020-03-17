@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="HydroCode" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/HydroCode" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-std=c++1y" />
+					<Add directory="include" />
+					<Add directory="solvers" />
+					<Add directory="eos" />
+					<Add directory="integrators" />
+					<Add directory="output" />
+					<Add directory="/usr/include/freetype2" />
+					<Add directory="boundaries" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/HydroCode" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+					<Add directory="solvers" />
+					<Add directory="eos" />
+					<Add directory="integrators" />
+					<Add directory="output" />
+					<Add directory="boundaries" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-O3" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-std=c++1y" />
+			<Add directory="/usr/local/lib" />
+		</Compiler>
+		<Linker>
+			<Add library="freetype" />
+			<Add library="blitz" />
+			<Add library="png" />
+			<Add library="pngwriter" />
+			<Add library="z" />
+			<Add library="m" />
+			<Add library="/usr/lib/x86_64-linux-gnu/libpng12.so" />
+			<Add directory="/usr/local/lib" />
+		</Linker>
+		<Unit filename="boundaries/Boundaries.cpp" />
+		<Unit filename="boundaries/Boundaries.hpp" />
+		<Unit filename="boundaries/Fixed.cpp" />
+		<Unit filename="boundaries/Fixed.hpp" />
+		<Unit filename="boundaries/Periodic.cpp" />
+		<Unit filename="boundaries/Periodic.hpp" />
+		<Unit filename="boundaries/outflow.cpp" />
+		<Unit filename="boundaries/outflow.hpp" />
+		<Unit filename="colortable.cpp" />
+		<Unit filename="colortable.hpp" />
+		<Unit filename="eos/Ideal.hpp" />
+		<Unit filename="eos/eos.hpp" />
+		<Unit filename="include/Grid.hpp" />
+		<Unit filename="include/Simulation.hpp" />
+		<Unit filename="include/auxillary.hpp" />
+		<Unit filename="include/slopelimiters.hpp" />
+		<Unit filename="initialize.cpp" />
+		<Unit filename="integrators/Euler.hpp" />
+		<Unit filename="integrators/Integrator.hpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="output/DBL.cpp" />
+		<Unit filename="output/DBL.hpp" />
+		<Unit filename="output/Output.hpp" />
+		<Unit filename="output/PNG.cpp" />
+		<Unit filename="output/PNG.hpp" />
+		<Unit filename="output/Tab.cpp" />
+		<Unit filename="output/Tab.hpp" />
+		<Unit filename="solvers/Solver.hpp" />
+		<Unit filename="solvers/hll.hpp" />
+		<Unit filename="src/Euler.cpp" />
+		<Unit filename="src/Grid.cpp" />
+		<Unit filename="src/Ideal.cpp" />
+		<Unit filename="src/Integrator.cpp" />
+		<Unit filename="src/Output.cpp" />
+		<Unit filename="src/Simulation.cpp" />
+		<Unit filename="src/Solver.cpp" />
+		<Unit filename="src/eos.cpp" />
+		<Unit filename="src/hll.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,156 @@
+# depslib dependency file v1.0
+1522680374 source:/home/asger/Dropbox/Programming/HydroCode/main.cpp
+	<iostream>
+	"Simulation.hpp"
+
+1522680890 /home/asger/Dropbox/Programming/HydroCode/include/Simulation.hpp
+	<string>
+	<vector>
+	<auxillary.hpp>
+	<memory>
+	<Solver.hpp>
+	"Grid.hpp"
+	<hll.hpp>
+	<eos.hpp>
+	<Ideal.hpp>
+	<Integrator.hpp>
+	<Euler.hpp>
+	<Boundaries.hpp>
+	<Periodic.hpp>
+	<Fixed.hpp>
+	<outflow.hpp>
+	<Output.hpp>
+	<DBL.hpp>
+	<PNG.hpp>
+	<Tab.hpp>
+	<chrono>
+
+1522597765 /home/asger/Dropbox/Programming/HydroCode/include/Grid.hpp
+	<string>
+	<vector>
+	<map>
+	<typeinfo>
+	<auxillary.hpp>
+
+1522676003 source:/home/asger/Dropbox/Programming/HydroCode/src/Grid.cpp
+	"Grid.hpp"
+
+1522676662 source:/home/asger/Dropbox/Programming/HydroCode/src/Simulation.cpp
+	"Simulation.hpp"
+
+1522674025 source:/home/asger/Dropbox/Programming/HydroCode/initialize.cpp
+	"Simulation.hpp"
+
+1522673976 /home/asger/Dropbox/Programming/HydroCode/include/auxillary.hpp
+	<blitz/array.h>
+	<blitz/tinyvec2.h>
+	<memory>
+	<array>
+	<exception>
+	<boost/format.hpp>
+
+1522676863 source:/home/asger/Dropbox/Programming/HydroCode/src/hll.cpp
+	"hll.hpp"
+
+1522591168 /home/asger/Dropbox/Programming/HydroCode/solvers/hll.hpp
+	<Solver.hpp>
+
+1522591176 /home/asger/Dropbox/Programming/HydroCode/solvers/Solver.hpp
+	<eos.hpp>
+
+1521995407 /home/asger/Dropbox/Programming/HydroCode/include/flux.hpp
+	<auxillary.hpp>
+
+1521210876 source:/home/asger/Dropbox/Programming/HydroCode/src/Solver.cpp
+	"Solver.hpp"
+
+1522430600 /home/asger/Dropbox/Programming/HydroCode/eos/eos.hpp
+	<auxillary.hpp>
+
+1522430592 /home/asger/Dropbox/Programming/HydroCode/eos/Ideal.hpp
+	<eos.hpp>
+	<blitz/tinyvec2.h>
+
+1522673730 source:/home/asger/Dropbox/Programming/HydroCode/src/Ideal.cpp
+	"Ideal.hpp"
+	<iostream>
+
+1522680347 source:/home/asger/Dropbox/Programming/HydroCode/src/Euler.cpp
+	"Euler.hpp"
+
+1522678141 /home/asger/Dropbox/Programming/HydroCode/integrators/Euler.hpp
+	<Integrator.hpp>
+
+1522678159 /home/asger/Dropbox/Programming/HydroCode/integrators/Integrator.hpp
+	<Solver.hpp>
+	<Grid.hpp>
+
+1521212572 source:/home/asger/Dropbox/Programming/HydroCode/src/Integrator.cpp
+	"Integrator.hpp"
+
+1522677542 source:/home/asger/Dropbox/Programming/HydroCode/src/eos.cpp
+	"eos.hpp"
+
+1522590573 /home/asger/Dropbox/Programming/HydroCode/output/Output.hpp
+	<auxillary.hpp>
+	<vector>
+	<fstream>
+	<Grid.hpp>
+
+1522427308 /home/asger/Dropbox/Programming/HydroCode/output/DBL.hpp
+	<Output.hpp>
+
+1522425161 source:/home/asger/Dropbox/Programming/HydroCode/output/DBL.cpp
+	"DBL.hpp"
+
+1522142052 source:/home/asger/Dropbox/Programming/HydroCode/src/Output.cpp
+	"Output.hpp"
+
+1522150193 source:/home/asger/Dropbox/Programming/HydroCode/colortable.cpp
+	"colortable.hpp"
+
+1522429442 /home/asger/Dropbox/Programming/HydroCode/colortable.hpp
+	<string>
+	<vector>
+	<fstream>
+	<iostream>
+	<cmath>
+
+1522428961 /home/asger/Dropbox/Programming/HydroCode/output/PNG.hpp
+	<pngwriter.h>
+	<Output.hpp>
+	"../colortable.hpp"
+
+1522429492 source:/home/asger/Dropbox/Programming/HydroCode/output/PNG.cpp
+	"PNG.hpp"
+
+1522167479 /home/asger/Dropbox/Programming/HydroCode/boundaries/Boundaries.hpp
+	<Grid.hpp>
+
+1522158189 /home/asger/Dropbox/Programming/HydroCode/boundaries/Periodic.hpp
+	<Boundaries.hpp>
+
+1522158145 source:/home/asger/Dropbox/Programming/HydroCode/boundaries/Boundaries.cpp
+	"Boundaries.hpp"
+
+1522158283 source:/home/asger/Dropbox/Programming/HydroCode/boundaries/Periodic.cpp
+	"Periodic.hpp"
+
+1522588829 source:/home/asger/Dropbox/Programming/HydroCode/boundaries/Fixed.cpp
+	"Fixed.hpp"
+
+1522587528 /home/asger/Dropbox/Programming/HydroCode/boundaries/Fixed.hpp
+	<Boundaries.hpp>
+
+1522598373 source:/home/asger/Dropbox/Programming/HydroCode/output/Tab.cpp
+	"Tab.hpp"
+
+1522429911 /home/asger/Dropbox/Programming/HydroCode/output/Tab.hpp
+	<Output.hpp>
+
+1522596293 /home/asger/Dropbox/Programming/HydroCode/boundaries/outflow.hpp
+	<Boundaries.hpp>
+
+1522596337 source:/home/asger/Dropbox/Programming/HydroCode/boundaries/outflow.cpp
+	"outflow.hpp"
+
