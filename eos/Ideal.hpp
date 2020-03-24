@@ -8,7 +8,7 @@
 class Ideal : public EOS
 {
     public:
-        Ideal(double g, Range m, Range v) : EOS(g, m, v) {};
+        Ideal(double g, Range m, Range v, std::size_t nd) : EOS(g, m, v, nd) {};
         virtual ~Ideal();
         void SoundSpeedSq(Array<double, 1>, const Array<double, 2>) override;
         inline double GetEnergy(const Array<double, 1>&, const Array<double, 1>&) const override;

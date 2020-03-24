@@ -22,8 +22,6 @@
  #define DIM_SELECT(a,b,c) c
 #endif
 
-extern int g_NDim;
-
 using namespace blitz;
 
 template<typename T>
@@ -39,11 +37,12 @@ constexpr typename std::underlying_type<E>::type to_idx(E e) {
     return static_cast<typename std::underlying_type<E>::type>(e);
 }
 
-enum class Axis : unsigned int
+using Axis = std::size_t;
+enum : std::size_t
 {
-    x1 = 0, x2 = 1, x3 = 2, x = 0, y = 1, z = 2
+    Axis_x1 = 0, Axis_x2, Axis_x3, Axis_x = 0, Axis_y, Axis_z
 };
-const std::array<Axis, 3> Axes = {Axis::x1, Axis::x2, Axis::x3};
+//const std::array<Axis, 3> Axes = {Axis_x1, Axis_x2, Axis_x3};
 
 enum class Side : unsigned int
 {
@@ -71,11 +70,6 @@ enum consvars
     cdens = 0, cmom_x1, cmom_x2, cmom_x3, energy3d
 };
 
-inline int cenergy()
-{
-    return g_NDim + 1;
-}
-
 enum primvars
 {
     pdens = 0, pprs, pvx1, pvx2, pvx3
@@ -88,31 +82,6 @@ struct Extents
     double axbeg;
     double axend;
 };
-
-/*struct ConsVars
-{
-    ConsVars(double d, vec m, double e) : Density(d), Momentum(m), Energy(e) {};
-    ConsVars() : Momentum(g_NDim) {};
-    double Density;
-    vec Momentum;
-    double Energy;
-};
-
-struct PrimVars
-{
-    PrimVars() : Velocity(g_NDim) {};
-    double Density;
-    vec Velocity;
-    double Pressure;
-};
-
-
-struct State
-{
-    ConsVars cons;
-    PrimVars prim;
-};
-*/
 
 struct State1D
 {

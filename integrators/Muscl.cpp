@@ -14,7 +14,7 @@ double Muscl::AdvanceSoln(std::unique_ptr<Solver>& solver, std::unique_ptr<EOS>&
 		State1D& state_l, State1D& state_r, double dt, Axis ax)
 {
     double dtdx = dt/grid.GetSpacing(ax);
-    state_l.cons -= 0.5*dtdx*(state_l.flux - state_r.flux);
+    state_l.cons += 0.5*dtdx*(state_l.flux - state_r.flux);
 	state_r.cons += 0.5*dtdx*(state_l.flux - state_r.flux);
     eos->ConsToPrim(state_l.prim, state_l.cons);
     eos->ConsToPrim(state_r.prim, state_r.cons);

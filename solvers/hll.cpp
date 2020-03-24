@@ -21,10 +21,10 @@ double hll::Riemann(State1D& state_l, State1D& state_r, Axis CalcDir, std::uniqu
     //std::cout << "vminL: " << v_minL << " vmaxL: " << v_maxL << std::endl;
     for (int i = 0 ; i < state_l.flux.extent(0); i++)
     {
-        double v_minL = state_l.prim(i, int(primvars::pvx1 + to_idx(CalcDir))) - c_sl(i);
-        double v_maxL = state_l.prim(i, int(primvars::pvx1 + to_idx(CalcDir))) + c_sl(i);
-        double v_minR = state_r.prim(i, int(primvars::pvx1 + to_idx(CalcDir))) - c_sr(i);
-        double v_maxR = state_r.prim(i, int(primvars::pvx1 + to_idx(CalcDir))) + c_sr(i);
+        double v_minL = state_l.prim(i, int(primvars::pvx1 + CalcDir)) - c_sl(i);
+        double v_maxL = state_l.prim(i, int(primvars::pvx1 + CalcDir)) + c_sl(i);
+        double v_minR = state_r.prim(i, int(primvars::pvx1 + CalcDir)) - c_sr(i);
+        double v_maxR = state_r.prim(i, int(primvars::pvx1 + CalcDir)) + c_sr(i);
         double alphaL = std::min(v_minL, v_minR);
         double alphaR = std::max(v_maxL, v_maxR);
         maxalpha = std::max(maxalpha, std::max(std::abs(alphaL), std::abs(alphaR)));

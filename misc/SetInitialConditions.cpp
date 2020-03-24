@@ -1,5 +1,4 @@
 #include "Simulation.hpp"
-extern int g_NDim;
 
 void Simulation::ApplyInitialConditions()
 {
@@ -14,14 +13,14 @@ void Simulation::ApplyInitialConditions()
                 if (i < cons.extent(0)/2)
                 {
                     cons(i,j,k,(int)consvars::cdens) = 1.0;
-                    for (int cdim = 0; cdim < g_NDim; cdim++) cons(i,j,k,int(consvars::cmom_x1 + cdim)) = 0.0;
-                    cons(i,j,k,cenergy()) = 1.0/0.4;
+                    for (std::size_t idim = 0; idim < this->grid.GetNDim(); idim++) cons(i,j,k,int(consvars::cmom_x1 + idim)) = 0.0;
+                    cons(i,j,k,this->grid.cenergy()) = 1.0/0.4;
                 }
                 else
                 {
                     cons(i,j,k,(int)consvars::cdens) = 0.1;
-                    for (int cdim = 0; cdim <  g_NDim; cdim++) cons(i,j,k,int(consvars::cmom_x1 + cdim)) = 0.0;
-                    cons(i,j,k,cenergy()) = 0.1/0.4;
+                    for (std::size_t idim = 0; idim <  this->grid.GetNDim(); idim++) cons(i,j,k,int(consvars::cmom_x1 + idim)) = 0.0;
+                    cons(i,j,k,this->grid.cenergy()) = 0.1/0.4;
                 }
                 //std::cout << "i, j, k, rho:" << i << " " << j << " " << k << ", " << this->grid(i,j,k,consvars::cdens) << std::endl;
             }

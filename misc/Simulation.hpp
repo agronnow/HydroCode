@@ -50,11 +50,12 @@ class Simulation
         void SetOutput(INI::File&);
         void SetPhysics(INI::File&);
         void SetSchemes(INI::File&);
-        void Step();
+        double Step();
         const std::string name;
         double dt;
         double t;
         double tstop;
+        double courant;
         Grid grid;
         std::unique_ptr<Solver> solver;
         std::unique_ptr<EOS> eos;

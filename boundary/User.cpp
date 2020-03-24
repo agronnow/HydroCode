@@ -12,7 +12,7 @@ void User::ApplyBoundary(Grid& grid)
 	{
 		case Side::x1b:
 		{
-			for (int i = 0; i < grid.GetNGhost(Axis::x1); i++)
+			for (std::size_t i = 0; i < grid.GetNGhost(Axis_x1); i++)
 			{
 				//Set boundary condition for consvars at -x boundary
 			}
@@ -20,7 +20,7 @@ void User::ApplyBoundary(Grid& grid)
 		}
 		case Side::x1e:
 		{
-			for (int i = consvars.extent(0)-grid.GetNGhost(Axis::x1); i < consvars.extent(0); i++)
+			for (std::size_t i = consvars.extent(0)-grid.GetNGhost(Axis_x1); i < consvars.extent(0); i++)
 			{
 				//Set boundary condition for consvars at +x boundary
 			}
@@ -28,7 +28,7 @@ void User::ApplyBoundary(Grid& grid)
 		}
 		case Side::x2b:
 		{
-			for (int i = 0; i < grid.GetNGhost(Axis::x2); i++)
+			for (std::size_t i = 0; i < grid.GetNGhost(Axis_x2); i++)
 			{
 				//Set boundary condition for consvars at -y boundary
 			}
@@ -36,7 +36,7 @@ void User::ApplyBoundary(Grid& grid)
 		}
 		case Side::x2e:
 		{
-			for (int i = consvars.extent(0)-grid.GetNGhost(Axis::x1); i < consvars.extent(0); i++)
+			for (std::size_t i = consvars.extent(0)-grid.GetNGhost(Axis_x1); i < consvars.extent(0); i++)
 			{
 				//Set boundary condition for consvars at +y boundary
 			}
@@ -44,7 +44,7 @@ void User::ApplyBoundary(Grid& grid)
 		}
 		case Side::x3b:
 		{
-			for (int i = 0; i < grid.GetNGhost(Axis::x3); i++)
+			for (std::size_t i = 0; i < grid.GetNGhost(Axis_x3); i++)
 			{
 				//Set boundary condition for consvars at -z boundary
 			}
@@ -52,7 +52,7 @@ void User::ApplyBoundary(Grid& grid)
 		}
 		case Side::x3e:
 		{
-			for (int i = consvars.extent(0)-grid.GetNGhost(Axis::x3); i < consvars.extent(0); i++)
+			for (std::size_t i = consvars.extent(0)-grid.GetNGhost(Axis_x3); i < consvars.extent(0); i++)
 			{
 				//Set boundary condition for consvars at +z boundary
 			}

@@ -4,33 +4,32 @@
 #include <pngwriter.h>
 #include <Output.hpp>
 #include "../misc/colortable.hpp"
-extern int g_NDim;
 
 class PNG : public Output
 {
     public:
-        PNG(int n, double d, std::vector<std::pair<std::string, int>> v, Axis a, bool proj, bool lp,
+        PNG(std::size_t n, double d, std::size_t nd, std::vector<std::pair<std::string, std::size_t>> v, Axis a, bool proj, bool lp,
             const std::string& cname, bool rev=false, bool aut=true, double minv=0.0, double maxv=0.0, bool cbar=true) :
-            Output(n, d, v), ax(a), projection(proj), logplot(lp), autominmax(aut),
+            Output(n, d, nd, v), ax(a), projection(proj), logplot(lp), autominmax(aut),
             minval(minv), maxval(maxv), CTab(ColorTable(0.0, 1.0, cname, rev)), colorbar(cbar)
         {
-            assert(("PNG output not available in 1D!", g_NDim > 1));
-            if (g_NDim == 2)
+            assert(("PNG output not available in 1D!", this->ndim > 1));
+            if (this->ndim == 2)
             {
                 this->projection = false;
-                this->ax = Axis::x3;
+                this->ax = Axis_x3;
             }
         };
-        PNG(int n, double d, std::vector<std::pair<std::string, int>> v, Axis a, bool proj, bool lp,
+        PNG(std::size_t n, double d, std::size_t nd, std::vector<std::pair<std::string, std::size_t>> v, Axis a, bool proj, bool lp,
             ColorTableType ctyp, bool aut=true, double minv=0.0, double maxv=0.0, bool cbar=true) :
-            Output(n, d, v), ax(a), projection(proj), logplot(lp), autominmax(aut),
+            Output(n, d, nd, v), ax(a), projection(proj), logplot(lp), autominmax(aut),
             minval(minv), maxval(maxv), CTab(ColorTable(0.0, 1.0, ctyp)), colorbar(cbar)
         {
-            assert(("PNG output not available in 1D!", g_NDim > 1));
-            if (g_NDim == 2)
+            assert(("PNG output not available in 1D!", this->ndim > 1));
+            if (this->ndim == 2)
             {
                 this->projection = false;
-                this->ax = Axis::x3;
+                this->ax = Axis_x3;
             }
         };
         virtual ~PNG();

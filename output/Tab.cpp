@@ -23,10 +23,10 @@ void Tab::OutputSnapshot(Grid& grid, StepInfo& info)
         for (auto& outputvar : this->outputvars) Tabout << std::setw(16) << outputvar.first;
         Tabout << std::endl;
 
-        for (int i = grid.GetNGhost(Axis::x1) ; i < vars.extent(0) - grid.GetNGhost(Axis::x1) ; i++)
+        for (int i = grid.GetNGhost(Axis_x1) ; i < vars.extent(0) - grid.GetNGhost(Axis_x1) ; i++)
         {
-            Tabout << boost::format("%10d %16.8e") % (i - grid.GetNGhost(Axis::x1)) % grid.GetCoord(Axis::x1, i, true);
-            for (auto& outputvar : this->outputvars) Tabout << boost::format(" %16.8e") % vars(i, 0, 0, outputvar.second);
+            Tabout << boost::format("%10d %16.8e") % (i - grid.GetNGhost(Axis_x1)) % grid.GetCoord(Axis_x1, i, true);
+            for (auto& outputvar : this->outputvars) Tabout << boost::format(" %16.8e") % vars(i, 0, 0, (int)outputvar.second);
             Tabout << std::endl;
         }
         Tabout.close();

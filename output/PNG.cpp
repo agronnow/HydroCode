@@ -9,8 +9,8 @@ void PNG::OutputSnapshot(Grid& grid, StepInfo& info)
 {
     Array<double, 4> vars = grid.GetPrimitiveVars();
     std::size_t nx, ny;
-    if (this->ax == Axis::x1) {nx = vars.extent(1);ny = vars.extent(2);}
-    else if (this->ax == Axis::x2) {nx = vars.extent(0);ny = vars.extent(2);}
+    if (this->ax == Axis_x1) {nx = vars.extent(1);ny = vars.extent(2);}
+    else if (this->ax == Axis_x2) {nx = vars.extent(0);ny = vars.extent(2);}
     else {nx = vars.extent(0);ny = vars.extent(1);}
     for (auto& outputvar : this->outputvars)
     {
@@ -25,9 +25,9 @@ void PNG::OutputSnapshot(Grid& grid, StepInfo& info)
         Array<double, 2> proj;
         if (this->projection)
         {
-            if (this->ax == Axis::x1) proj = mean(curvar(tensor::j, tensor::k, tensor::i), tensor::k);
-            else if (this->ax == Axis::x2) proj = mean(curvar(tensor::i, tensor::k, tensor::j), tensor::k);
-            else if (this->ax == Axis::x3) proj = mean(curvar, tensor::k);
+            if (this->ax == Axis_x1) proj = mean(curvar(tensor::j, tensor::k, tensor::i), tensor::k);
+            else if (this->ax == Axis_x2) proj = mean(curvar(tensor::i, tensor::k, tensor::j), tensor::k);
+            else if (this->ax == Axis_x3) proj = mean(curvar, tensor::k);
 
             if (autominmax)
             {
@@ -52,9 +52,9 @@ void PNG::OutputSnapshot(Grid& grid, StepInfo& info)
             {
                 double curval = 0;
                 if (this->projection) curval = proj(i, j);
-                else if (this->ax == Axis::x1) curval = curvar(curvar.extent(0)/2, i, j, outputvar.second);
-                else if (this->ax == Axis::x2) curval = curvar(i, curvar.extent(1)/2, j, outputvar.second);
-                else if (this->ax == Axis::x3) curval = curvar(i, j, curvar.extent(2)/2, outputvar.second);
+                else if (this->ax == Axis_x1) curval = curvar(curvar.extent(0)/2, i, j, (int)outputvar.second);
+                else if (this->ax == Axis_x2) curval = curvar(i, curvar.extent(1)/2, j, (int)outputvar.second);
+                else if (this->ax == Axis_x3) curval = curvar(i, j, curvar.extent(2)/2, (int)outputvar.second);
                 double col;
                 if (curval < this->minval) curval = this->minval;
                 else if (curval > this->maxval) curval = this->maxval;
@@ -76,7 +76,7 @@ void PNG::OutputSnapshot(Grid& grid, StepInfo& info)
             png.square(nx+15, 15, nx-15+48, ny-15, 0.0, 0.0, 0.0);
             int delta_label = (ny-16)/10;
             char fontpath[255] = "/usr/share/fonts/liberation/LiberationSans-Regular.ttf";
-            for (int y = 16; y <= ny - 16; y++)
+            for (std::size_t y = 16; y <= ny - 16; y++)
             {
                 double col = (y-16)/(ny-32.0);
                 RGB rgb = CTab.GetColor(col);

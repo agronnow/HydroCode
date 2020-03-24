@@ -12,32 +12,56 @@ void Periodic::ApplyBoundary(Grid& grid)
 	{
 		case Side::x1b:
 		{
-			consvars(0, Range::all(), Range::all(), Range::all()) = consvars(consvars.extent(0)-1, Range::all(), Range::all(), Range::all());
+			for (std::size_t i = 0; i < grid.GetNGhost(Axis_x1); i++)
+			{
+				consvars(i, Range::all(), Range::all(), Range::all()) =
+						consvars(consvars.extent(0)-grid.GetNGhost(Axis_x1)-1, Range::all(), Range::all(), Range::all());
+			}
 			break;
 		}
 		case Side::x1e:
 		{
-			consvars(consvars.extent(0)-1, Range::all(), Range::all(), Range::all()) = consvars(0, Range::all(), Range::all(), Range::all());
+			for (std::size_t i = consvars.extent(0)-grid.GetNGhost(Axis_x1); i < consvars.extent(0); i++)
+			{
+				consvars(i, Range::all(), Range::all(), Range::all()) =
+						consvars(grid.GetNGhost(Axis_x1), Range::all(), Range::all(), Range::all());
+			}
 			break;
 		}
 		case Side::x2b:
 		{
-			consvars(Range::all(), 0, Range::all(), Range::all()) = consvars(Range::all(), consvars.extent(1)-1, Range::all(), Range::all());
+			for (std::size_t i = 0; i < grid.GetInnerBeg(Axis_x2); i++)
+			{
+				consvars(Range::all(), i, Range::all(), Range::all()) =
+						consvars(Range::all(), grid.GetInnerEnd(Axis_x2), Range::all(), Range::all());
+			}
 			break;
 		}
 		case Side::x2e:
 		{
-			consvars(Range::all(), consvars.extent(1)-1, Range::all(), Range::all()) = consvars(Range::all(), 0, Range::all(), Range::all());
+			for (std::size_t i = grid.GetInnerEnd(Axis_x2)+1; i < consvars.extent(0); i++)
+			{
+				consvars(Range::all(), i, Range::all(), Range::all()) =
+						consvars(Range::all(), grid.GetInnerBeg(Axis_x2), Range::all(), Range::all());
+			}
 			break;
 		}
 		case Side::x3b:
 		{
-			consvars(Range::all(), Range::all(), 0, Range::all()) = consvars(Range::all(), Range::all(), consvars.extent(2)-1, Range::all());
+			for (std::size_t i = 0; i < grid.GetNGhost(Axis_x3); i++)
+			{
+				consvars(Range::all(), Range::all(), i, Range::all()) =
+						consvars(Range::all(), Range::all(), consvars.extent(2)-grid.GetNGhost(Axis_x3)-1, Range::all());
+			}
 			break;
 		}
 		case Side::x3e:
 		{
-			consvars(Range::all(), Range::all(), consvars.extent(2)-1, Range::all()) = consvars(Range::all(), Range::all(), 0, Range::all());
+			for (std::size_t i = consvars.extent(0)-grid.GetNGhost(Axis_x3); i < consvars.extent(0); i++)
+			{
+				consvars(Range::all(), Range::all(), i, Range::all()) =
+						consvars(Range::all(), Range::all(), grid.GetNGhost(Axis_x3), Range::all());
+			}
 			break;
 		}
 	}

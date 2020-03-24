@@ -15,7 +15,8 @@ double Euler::AdvanceSoln(std::unique_ptr<Solver>& solver, std::unique_ptr<EOS>&
 {
     double curmaxalpha = solver->Riemann(state_l, state_r, ax, eos);
     double dtdx = dt/grid.GetSpacing(ax);
-    cons -= dtdx*(state_l.flux(Range(1,toEnd), Range::all()) - state_l.flux(Range(0,state_l.flux.extent(0)-1), Range::all()));
+    cons -= dtdx*(state_l.flux(Range(0,state_l.flux.extent(0)-2), Range::all()) - state_l.flux(Range(1,state_l.flux.extent(0)-1), Range::all()));
+    std::cout << cons << std::endl;
     if (std::isnan(sum(cons)))
     {
         std::ostringstream err;

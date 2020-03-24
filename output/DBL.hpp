@@ -7,7 +7,7 @@
 class DBL : public Output
 {
     public:
-        DBL(int n, double d, std::vector<std::pair<std::string, int>> v) : Output(n, d, v) {};
+        DBL(std::size_t n, double d, std::size_t nd, std::vector<std::pair<std::string, std::size_t>> v) : Output(n, d, nd, v) {};
         virtual ~DBL();
         void OutputSnapshot(Grid&, StepInfo&) override;
         std::string GetFormat() override {return "DBL";}

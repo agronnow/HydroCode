@@ -1,5 +1,4 @@
 #include "eos.hpp"
-extern int g_NDim;
 
 
 EOS::~EOS()
@@ -64,9 +63,9 @@ constoprim_status EOS::ConsToPrim(Array<double, 2>& prim, Array<double, 2>& cons
 	  status = constoprim_status::neg_density;
 	}
 	prim(Range::all(), (int)primvars::pdens) = cons(Range::all(), (int)consvars::cdens);
-	for (int ndim = 0 ; ndim < g_NDim ; ndim++)
+	for (std::size_t idim = 0 ; idim < this->ndim ; idim++)
 	{
-		prim(Range::all(), primvars::pvx1 + ndim) = cons(Range::all(), consvars::cmom_x1 + ndim)/cons(Range::all(), (int)consvars::cdens);
+		prim(Range::all(), primvars::pvx1 + idim) = cons(Range::all(), consvars::cmom_x1 + idim)/cons(Range::all(), (int)consvars::cdens);
 	}
 
 	if (any(cons(Range::all(), cenergy())) < 0.0)
@@ -105,10 +104,10 @@ constoprim_status EOS::ConsToPrim(Array<double, 2>& prim, Array<double, 2>& cons
 void EOS::PrimToCons(Array<double, 4>& cons, Array<double, 4>& prim)
 {
 	cons(Range::all(), Range::all(), Range::all(), (int)consvars::cdens) = prim(Range::all(), Range::all(), Range::all(), (int)primvars::pdens);
-	for (int ndim = 0 ; ndim < g_NDim ; ndim++)
+	for (std::size_t idim = 0 ; idim < this->ndim ; idim++)
 	{
-		cons(Range::all(), Range::all(), Range::all(), primvars::pvx1 + ndim) =
-		 prim(Range::all(), Range::all(), Range::all(), consvars::cmom_x1 + ndim)*prim(Range::all(), Range::all(), Range::all(), (int)primvars::pdens);
+		cons(Range::all(), Range::all(), Range::all(), primvars::pvx1 + idim) =
+		 prim(Range::all(), Range::all(), Range::all(), consvars::cmom_x1 + idim)*prim(Range::all(), Range::all(), Range::all(), (int)primvars::pdens);
 	}
 	this->GetEnergy(cons, prim);
 }
@@ -116,9 +115,9 @@ void EOS::PrimToCons(Array<double, 4>& cons, Array<double, 4>& prim)
 void EOS::PrimToCons(Array<double, 2>& cons, Array<double, 2>& prim)
 {
 	cons(Range::all(), (int)consvars::cdens) = prim(Range::all(), (int)primvars::pdens);
-	for (int ndim = 0 ; ndim < g_NDim ; ndim++)
+	for (std::size_t idim = 0 ; idim < this->ndim ; idim++)
 	{
-		cons(Range::all(), consvars::cmom_x1 + ndim) = prim(Range::all(), primvars::pvx1 + ndim)*prim(Range::all(), (int)primvars::pdens);
+		cons(Range::all(), consvars::cmom_x1 + idim) = prim(Range::all(), primvars::pvx1 + idim)*prim(Range::all(), (int)primvars::pdens);
 	}
 	this->GetEnergy(cons, prim);
 }
